@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 	// 13 = Timeout
 	// --> see curl.h for more info
 	puts("Checking for new version, please wait...");
-	const CURLcode result = download_file(updateVersion, false);
+	const CURLcode result = download_file(UPDATE_VER_LINK, false);
 	
 	// Get current working directory (cwd)
 	char cwd[FILENAME_MAX];
@@ -58,12 +58,20 @@ int main(int argc, char* argv[])
 		{
 			puts("Fetched newest version, comparing...\n");
 
+#if USING_EXPLICIT_FILENAMES
+			const char* ver_name = UPDATE_VER_FILENAME;
+			const char* patch_name = PATCH_FILENAME;
+			const char* full_client_name = FULL_CLIENT_FILENAME;
+#else
+			const char* ver_name = parse_url(UPDATE_VER_LINK);
+			const char* patch_name = parse_url(PATCH_LINK);
+			const char* full_client_name = parse_url(FULL_CLIENT_LINK);
+#endif
+
 			// prepare variables for later use
-			const std::string rver = read_file(parse_url(updateVersion));
+			const std::string rver = read_file(ver_name);
 			const std::string lver = read_file(LOCAL_VERSION_FILE);
-			const char* ver_name = parse_url(updateVersion);
-			const char* patch_name = parse_url(patchFile);
-			const char* full_client_name = parse_url(fullClientFile);
+			
 			std::string command(cwd); command += APP_NAME;
 			bool isDeploy;
 
@@ -118,10 +126,10 @@ int main(int argc, char* argv[])
 					puts("======================");
 					
 					puts("Downloading files, please do NOT close this window!\n");
-					printf("Fetching file from: %s\n", isDeploy ? fullClientFile : patchFile);
+					printf("Fetching file from: %s\n", isDeploy ? FULL_CLIENT_LINK : PATCH_LINK);
 
 					// if isDeploy(true), download full client, else download the patch
-					const CURLcode res = download_file(isDeploy ? fullClientFile : patchFile, true);
+					const CURLcode res = download_file(isDeploy ? FULL_CLIENT_LINK : PATCH_LINK, true);
 
 					if (res == CURLE_OK)
 					{
