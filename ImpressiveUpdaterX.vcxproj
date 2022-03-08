@@ -37,7 +37,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{88f89d71-3bc1-4234-bdcd-62203d357467}</ProjectGuid>
     <RootNamespace>Project1</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>IUX</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -50,7 +50,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -91,6 +91,7 @@
     <IntDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)_debug</TargetName>
+    <Linkage>StaticLibrary_MT</Linkage>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -101,6 +102,7 @@
     <Linkage-libssh2>static</Linkage-libssh2>
     <IntDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <Linkage>StaticLibrary_MT</Linkage>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -108,27 +110,29 @@
     <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_debug</TargetName>
+    <Linkage>StaticLibrary_MT</Linkage>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</IntDir>
+    <Linkage>StaticLibrary_MT</Linkage>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\static;packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\static\libcurl_debug.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\lib\vc140_x86_static_mt_debug\libcurld.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>echo xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\dynamic\libcurl_debug.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
@@ -145,28 +149,23 @@ xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\static;packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\static\libcurl.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\lib\vc140_x86_static_mt_release\libcurl.lib;packages\zlib-1.2.11-winsoft666.1.0.0.3\build\native\lib\v140\Win32\StaticLibrary\MT\Release\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>echo xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\dynamic\libcurl.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\libeay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\libssl32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\ssleay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\dynamic\libcurl.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\libeay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\libssl32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\ssleay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -178,7 +177,7 @@ xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\static;packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -204,7 +203,7 @@ xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib
       <SDLCheck>false</SDLCheck>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\static;packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
@@ -227,14 +226,16 @@ xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="packages\openssl-vc141-static-x86_64.1.0.2\build\native\openssl-vc141-static-x86_64.targets" Condition="Exists('packages\openssl-vc141-static-x86_64.1.0.2\build\native\openssl-vc141-static-x86_64.targets')" />
-    <Import Project="packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\curl-vc141-dynamic-x86_64.targets" Condition="Exists('packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\curl-vc141-dynamic-x86_64.targets')" />
+    <Import Project="packages\zlib-1.2.11-winsoft666.1.0.0.3\build\native\zlib-1.2.11-winsoft666.targets" Condition="Exists('packages\zlib-1.2.11-winsoft666.1.0.0.3\build\native\zlib-1.2.11-winsoft666.targets')" />
+    <Import Project="packages\openssl-1.1.1-winsoft666.1.0.0.4\build\native\openssl-1.1.1-winsoft666.targets" Condition="Exists('packages\openssl-1.1.1-winsoft666.1.0.0.4\build\native\openssl-1.1.1-winsoft666.targets')" />
+    <Import Project="packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\curl-7.63.0-winsoft666.targets" Condition="Exists('packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\curl-7.63.0-winsoft666.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\openssl-vc141-static-x86_64.1.0.2\build\native\openssl-vc141-static-x86_64.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\openssl-vc141-static-x86_64.1.0.2\build\native\openssl-vc141-static-x86_64.targets'))" />
-    <Error Condition="!Exists('packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\curl-vc141-dynamic-x86_64.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\curl-vc141-dynamic-x86_64.targets'))" />
+    <Error Condition="!Exists('packages\zlib-1.2.11-winsoft666.1.0.0.3\build\native\zlib-1.2.11-winsoft666.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\zlib-1.2.11-winsoft666.1.0.0.3\build\native\zlib-1.2.11-winsoft666.targets'))" />
+    <Error Condition="!Exists('packages\openssl-1.1.1-winsoft666.1.0.0.4\build\native\openssl-1.1.1-winsoft666.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\openssl-1.1.1-winsoft666.1.0.0.4\build\native\openssl-1.1.1-winsoft666.targets'))" />
+    <Error Condition="!Exists('packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\curl-7.63.0-winsoft666.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\curl-7.63.0-winsoft666.targets'))" />
   </Target>
 </Project>

@@ -18,6 +18,11 @@
 ///
 /// Lamina022, lamina dot anju at outlook dot com
 
+#pragma comment(lib, "wldap32.lib" )
+#pragma comment(lib, "crypt32.lib" )
+#pragma comment(lib, "Ws2_32.lib")
+
+
 #include "ImpressiveUpdaterX.hh"
 #include "dirent.h"
 #include "zip.h"
