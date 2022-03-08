@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- user interface -->
+  <ItemGroup>
+    <PropertyPageSchema Include="$(MSBuildThisFileDirectory)default-propertiesui.xml" />
+  </ItemGroup>
+
+  <!-- general -->
+  <ItemDefinitionGroup>
+    <ClCompile>
+		<PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+		<AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  
+  <!-- v140 Win32 StaticLibrary MT -->
+  <ItemDefinitionGroup Condition="'$(PlatformToolset)' == 'v140' And '$(Platform)' == 'Win32' And '$(Linkage)' == 'StaticLibrary_MT' ">
+    <ClCompile>
+		<PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+	<Link>
+		<AdditionalDependencies>$(MSBuildThisFileDirectory)lib\v140\Win32\StaticLibrary\MT\Release\libcrypto.lib;$(MSBuildThisFileDirectory)lib\v140\Win32\StaticLibrary\MT\Release\libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  
+  
+  <!-- v140 Win32 DynamicLibrary MD -->
+  <ItemDefinitionGroup Condition="'$(PlatformToolset)' == 'v140' And '$(Platform)' == 'Win32' And '$(Linkage)' == 'DynamicLibrary_MD' ">
+    <ClCompile>
+		<PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+	<Link>
+		<AdditionalDependencies>$(MSBuildThisFileDirectory)lib\v140\Win32\DynamicLibrary\MD\Release\libcrypto.lib;$(MSBuildThisFileDirectory)lib\v140\Win32\DynamicLibrary\MD\Release\libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  
+  
+  <Target Name="openssl_1_1_1_AfterBuild" AfterTargets="AfterBuild" />
+  <Target Name="openssl_1_1_1_afterbuild_cmd1"
+          Condition="'$(PlatformToolset)' == 'v140' And '$(Platform)' == 'Win32' And '$(Linkage)' == 'DynamicLibrary_MD' "
+          AfterTargets="openssl_1_1_1_AfterBuild">
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\v140\Win32\MD\Release\libcrypto-1_1.dll" DestinationFiles="$(TargetDir)libcrypto-1_1.dll" SkipUnchangedFiles="true" />
+	<Copy SourceFiles="$(MSBuildThisFileDirectory)bin\v140\Win32\MD\Release\libssl-1_1.dll" DestinationFiles="$(TargetDir)libssl-1_1.dll" SkipUnchangedFiles="true" />
+
+  </Target>
+</Project>
