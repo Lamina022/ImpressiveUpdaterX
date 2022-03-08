@@ -1,4 +1,4 @@
-﻿/// ImpressiveUpdaterX.cpp : Defines the entry point for the application.
+﻿/// ImpressiveUpdaterX.cc : Defines the entry point for the application.
 ///
 /// Very simple auto-updater focusing on backwards compatibility and cross-platform support.
 /// Basically the program compares a local and a remote version file. If they match, it will start the game/program.

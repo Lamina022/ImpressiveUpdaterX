@@ -44,7 +44,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -57,13 +57,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -135,14 +136,8 @@
       <AdditionalDependencies>packages\curl-7.63.0-winsoft666.1.0.0.4\build\native\lib\vc140_x86_static_mt_debug\libcurld.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>echo xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\dynamic\libcurl_debug.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\libeay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\libssl32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\ssleay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\Win32\dynamic\libcurl_debug.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\libeay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\libssl32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\Win32\dynamic\ssleay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -185,14 +180,7 @@ xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib
       <AdditionalDependencies>packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\static\libcurl_debug.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>echo xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\dynamic\libcurl_debug.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\libeay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\libssl32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\ssleay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\dynamic\libcurl_debug.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\libeay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\libssl32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\ssleay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y</Command>
+      <Command>echo xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\dynamic\libcurl_debug.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -214,14 +202,7 @@ xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib
       <AdditionalDependencies>packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\static\libcurl.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>echo xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\dynamic\libcurl.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\libeay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\libssl32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-echo xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\ssleay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\dynamic\libcurl.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\libeay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\libssl32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y
-xcopy "$(SolutionDir)packages\openssl-vc141-static-x86_64.1.0.2\build\native\lib\x64\dynamic\ssleay32.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y</Command>
+      <Command>echo xcopy "$(SolutionDir)packages\curl-vc141-dynamic-x86_64.7.59.0\build\native\lib\x64\dynamic\libcurl.dll"  "$(SolutionDir)build\$(Platform)\$(Configuration)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
