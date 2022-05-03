@@ -22,6 +22,7 @@ If they don't match, it will proceed to download a ZIP file.
 ## 'Why'
 I am the developer of the software Impressive Launcher, which is a launcher mainly tailored for the KITO community and Impressive Title servers.
 But since my current application did not work well with Windows 7 and UNIX-link systems at the time, I needed a simple and reliable solution. So the Impressive Updater X was born with the 'X' indicating the cross-platform and compatiblity aim.
+
 NOTE: Impressive Launcher now fully supports Windows 7
 
 
